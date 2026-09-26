@@ -1,66 +1,120 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const reel = document.querySelector(".reel");
-  if (reel && !reel.dataset.cloned) {
-    const original = [...reel.children];
-    original.forEach(card => reel.appendChild(card.cloneNode(true)));
-    reel.dataset.cloned = "true";
-  }
+/* ==================================
+   OPENING COUNTDOWN
+================================== */
 
-  const confetti = document.querySelector(".confetti");
-  if (confetti) {
-    for(let i=0;i<65;i++){
-      const piece=document.createElement("i");
-      piece.style.left=Math.random()*100+"%";
-      piece.style.top=(-10-Math.random()*30)+"%";
-      piece.style.animationDuration=(4+Math.random()*5)+"s";
-      piece.style.animationDelay=(Math.random()*5)+"s";
-      piece.style.transform=`rotate(${Math.random()*360}deg)`;
-      confetti.appendChild(piece);
+document.addEventListener("DOMContentLoaded", function () {
+
+    const countdown = document.getElementById("countdown");
+    const openButton = document.getElementById("openButton");
+
+    if (countdown && openButton) {
+
+        let number = 3;
+
+        countdown.textContent = number;
+
+        const timer = setInterval(function () {
+
+            number--;
+
+            if (number > 0) {
+
+                countdown.textContent = number;
+
+            } else {
+
+                clearInterval(timer);
+
+                countdown.textContent = "❤️";
+
+                openButton.disabled = false;
+
+                openButton.textContent =
+                    "💌 Open My Surprise";
+
+                openButton.onclick = function () {
+
+                    window.location.href =
+                        "birthday.html";
+
+                };
+
+            }
+
+        }, 1000);
     }
-  }
 
-  // Countdown on the opening page — the button unlocks only after 3 → 2 → 1.
-  const countdown = document.querySelector(".countdown");
-  const openBtn = document.querySelector(".surprise-btn");
-  if (countdown && openBtn) {
-    let n = 3;
-    openBtn.classList.add("is-disabled");
-    openBtn.setAttribute("aria-disabled", "true");
-    openBtn.setAttribute("tabindex", "-1");
-    const timer = setInterval(() => {
-      n--;
-      if (n > 0) {
-        countdown.textContent = n;
-      } else {
-        countdown.textContent = "OPEN 💗";
-        openBtn.classList.remove("is-disabled");
-        openBtn.removeAttribute("aria-disabled");
-        openBtn.removeAttribute("tabindex");
-        clearInterval(timer);
-      }
-    }, 1000);
-  }
 
-  // Type the final message paragraph-by-paragraph for a personal feel.
-  const message = document.querySelector("#messageBox");
-  if (message) {
-    const paragraphs = [...message.querySelectorAll("p")];
-    paragraphs.forEach((p, index) => {
-      const full = p.textContent;
-      p.textContent = "";
-      p.style.opacity = "1";
-      const delay = index * 2100;
-      setTimeout(() => {
-        let i = 0;
-        const speed = 22;
-        const type = () => {
-          if (i < full.length) {
-            p.textContent += full.charAt(i++);
-            setTimeout(type, speed);
-          }
-        };
-        type();
-      }, delay);
-    });
-  }
+    /* ==================================
+       TYPING MESSAGE
+    ================================== */
+
+    const typingElement =
+        document.getElementById("typingMessage");
+
+    if (typingElement) {
+
+        const message = `
+Nuvvu natho vunna anni rojulu,
+manam kottukunna, tittukunna,
+nuvvu eppudu mammalni vadili vellaledu. ❤️
+
+Honestly, I am very happy and lucky
+to have you in my life.
+
+Nuvvu manatho unte aa happiness
+words lo cheppalenu. 🥹❤️
+
+Nuvvu nee life lo chala success avvali.
+Prathi vishayam lo mundhuku vellali.
+
+Nee dreams anni nijam avvali.
+Always keep smiling and stay happy. ❤️✨
+
+And whatever happens,
+never forget that you have people
+who genuinely care about you. 💕
+        `;
+
+        let index = 0;
+
+        function typeMessage() {
+
+            if (index < message.length) {
+
+                typingElement.innerHTML +=
+                    message.charAt(index);
+
+                index++;
+
+                setTimeout(
+                    typeMessage,
+                    35
+                );
+
+            }
+
+        }
+
+        typeMessage();
+    }
+
 });
+
+
+/* ==================================
+   PAGE NAVIGATION
+================================== */
+
+function goToMemories() {
+
+    window.location.href =
+        "memories.html";
+}
+
+
+function goToFinal() {
+
+    window.location.href =
+        "final.html";
+}
