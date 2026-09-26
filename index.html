@@ -1,13 +1,48 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>A Little Birthday Surprise 💌</title><link rel="stylesheet" href="style.css"></head>
-<body><main class="page intro-page"><div class="glow"></div>
-<section class="card envelope">
-<div class="surprise-intro">And this is a surprise for you 💌</div>
-<div class="open-label">Open will be enabled in…</div>
-<div class="countdown" aria-live="polite">3</div>
-<div class="icon heartbeat">💗</div><p class="tiny">A little surprise is waiting</p>
-<h1>I Have a<br><span>Message For You</span></h1>
-<p class="lead">Don't open this unless you're ready for a smile, a few memories, and a whole lot of birthday love. ✨</p>
-<a class="btn surprise-btn is-disabled" href="birthday.html" aria-disabled="true" tabindex="-1">Open My Message 💗</a>
-</section></main><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Surprise For You ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="opening-page">
+
+    <div class="floating-hearts">
+        <span>❤️</span>
+        <span>💗</span>
+        <span>💕</span>
+        <span>✨</span>
+        <span>💖</span>
+        <span>🌸</span>
+    </div>
+
+    <main class="opening-card">
+
+        <div class="envelope">💌</div>
+
+        <p class="small-text">A little surprise is waiting...</p>
+
+        <h1>
+            And this is<br>
+            <span>a surprise for you ❤️</span>
+        </h1>
+
+        <p class="opening-message">
+            Something special is waiting behind this button.
+        </p>
+
+        <h2>Open will be enabled in...</h2>
+
+        <div id="countdown" class="countdown">3</div>
+
+        <button id="openButton" class="main-button" disabled>
+            🔒 Please Wait...
+        </button>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
